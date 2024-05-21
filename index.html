@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tarea6</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #6185ab;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #000000;
+            border-radius: 8px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Determinar Grado de Eficiencia del Operario</h2>
+        <label for="defectuosos">Número de tornillos defectuosos:</label>
+        <input type="number" id="defectuosos" min="0">
+
+        <label for="producidos">Número de tornillos producidos:</label>
+        <input type="number" id="producidos" min="0">
+
+        <button onclick="calcularGrado()">Calcular Grado de Eficiencia</button>
+
+        <h3 id="resultado"></h3>
+    </div>
+
+    <script>
+        function calcularGrado() {
+            const defectuosos = parseInt(document.getElementById('defectuosos').value);
+            const producidos = parseInt(document.getElementById('producidos').value);
+            let grado;
+
+            if (defectuosos >= 200 && producidos <= 10000) {
+                grado = 5;
+            } else if (defectuosos < 200 && producidos > 10000) {
+                grado = 8;
+            } else if (defectuosos < 200) {
+                grado = 6;
+            } else if (producidos > 10000) {
+                grado = 7;
+            } else {
+                grado = 5;
+            }
+
+            document.getElementById('resultado').innerText = `El grado de eficiencia es: ${grado}`;
+        }
+    </script>
+</body>
+</html>
